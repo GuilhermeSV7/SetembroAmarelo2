@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class dialogo : MonoBehaviour
+public class dialogao : MonoBehaviour
 {
     public TextMeshPro que;
 
