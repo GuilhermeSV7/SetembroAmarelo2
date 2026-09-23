@@ -2,15 +2,48 @@ using UnityEngine;
 
 public class movimento : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public float speed = 5f;
+    public float jumpForce = 7f;
+    public int move = 5;
+    private Rigidbody2D rb;
+    private bool isGrounded;
+
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        //Movimento esquerda/direita 
+        float speed = Input.GetAxisRaw("Horizontal");
+        rb.linearVelocity = new Vector2(move * speed, rb.linearVelocity.y);
+
+        //Pulo 
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+
+
+        }
     }
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+          if (collision.gameObject.CompareTag("Isgrounded"))
+          {
+            isGrounded = true;
+          }
+       
+        }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Isgrounded"))
+        {
+            isGrounded = false;
+        }
+    
+    }
+
+
 }
+
