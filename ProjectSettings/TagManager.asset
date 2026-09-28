@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - Ground
+  - Isgrounded
+  - Jogador
+  - Playe
   layers:
   - Default
   - TransparentFX
