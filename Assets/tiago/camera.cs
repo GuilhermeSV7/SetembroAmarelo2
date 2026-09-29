@@ -1,41 +1,25 @@
-
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-
+using UnityEngine.UIElements;
 public class camera : MonoBehaviour
 {
-    [SerializeField] private Transform groundCheck;
-    [SerializeField] private float groundDist;
-    [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private int totalJump;
-    [SerializeField] private Animator anim;
-    [SerializeField] private Transform look;
-    [SerializeField] private Transform cameraTarget;
-    [SerializeField] private float cameraSpeed;
-    private int jumpLes;
-    private bool canJump;
-    private bool isGroundCheck;
-
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private float jumpForce;
-    private float inputDirection;
-    private bool isDirectionRight = true;
-    private Rigidbody2D rb2d;
-
-
-
+    private Transform target;
+    private Vector3 velocity = Vector3.zero;
+    private float smothTime = 0.1f;
 
 
     void Start()
     {
-        
+        target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     
     void Update()
     {
-        
+        Vector3 cameraPosition = target.position + new Vector3(0, 0, -1);
+        transform.position = Vector3.SmoothDamp(transform.position, cameraPosition, ref velocity, smothTime);
+    
     }
+
+  
+
 }

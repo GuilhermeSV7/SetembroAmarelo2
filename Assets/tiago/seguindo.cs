@@ -18,7 +18,7 @@ public class seguindo : MonoBehaviour
     
     void Update()
     {
-        if (Vector2.Distance(transform.position, Target.position) < 5)
+        if (Vector2.Distance(transform.position, Target.position) < 15)
         {
             transform.position = Vector2.MoveTowards(transform.position, Target.position, speed * Time.deltaTime);
         }
