@@ -20,7 +20,6 @@ public class MenuGame : MonoBehaviour
 	//}
 
 	public GameObject menu;
-	public GameObject BGSair;
 	public GameObject BGOp;
 	public bool IsMenu;
 	public int IsMenuI = -1;
@@ -47,14 +46,6 @@ public class MenuGame : MonoBehaviour
 		}
 	}
 
-	public void BGSairTwo() 
-	{ 
-		BGSair.SetActive(true);
-	}
-	public void BGSairSair()
-	{
-		BGSair.SetActive(false);
-	}
 	public void BGOpEntrar()
 	{
 		BGOp.SetActive(true);
