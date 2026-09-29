@@ -3,22 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class MenuGame : MonoBehaviour
 {
-	//public GameObject menu;
-
-	//public void desativaMenu()
-	//{
-	//	menu.SetActive(!menu.activeSelf);
-	//}
-
-
-	//private void Update()
-	//{
-	//	if (Input.GetKeyUp(KeyCode.Escape))
-	//	{
-	//		desativaMenu();
-	//	}
-	//}
-
 	public GameObject menu;
 	public GameObject BGOp;
 	public bool IsMenu;
@@ -64,5 +48,18 @@ public class MenuGame : MonoBehaviour
 	public void QuitGame()
 	{
 		Application.Quit();
+	}
+
+	public void Fase1()
+	{
+		SceneManager.LoadScene("Fase1");
+	}
+	public void Fase2()
+	{
+		SceneManager.LoadScene("Fase2");
+	}
+	public void Fase3()
+	{
+		SceneManager.LoadScene("Fase3");
 	}
 }
