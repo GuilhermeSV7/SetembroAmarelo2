@@ -3,24 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuGame : MonoBehaviour
 {
-	//public GameObject menu;
-
-	//public void desativaMenu()
-	//{
-	//	menu.SetActive(!menu.activeSelf);
-	//}
-
-
-	//private void Update()
-	//{
-	//	if (Input.GetKeyUp(KeyCode.Escape))
-	//	{
-	//		desativaMenu();
-	//	}
-	//}
-
 	public GameObject menu;
-	public GameObject BGSair;
 	public GameObject BGOp;
 	public bool IsMenu;
 	public int IsMenuI = -1;
@@ -47,14 +30,6 @@ public class MenuGame : MonoBehaviour
 		}
 	}
 
-	public void BGSairTwo() 
-	{ 
-		BGSair.SetActive(true);
-	}
-	public void BGSairSair()
-	{
-		BGSair.SetActive(false);
-	}
 	public void BGOpEntrar()
 	{
 		BGOp.SetActive(true);
@@ -73,5 +48,18 @@ public class MenuGame : MonoBehaviour
 	public void QuitGame()
 	{
 		Application.Quit();
+	}
+
+	public void Fase1()
+	{
+		SceneManager.LoadScene("Fase1");
+	}
+	public void Fase2()
+	{
+		SceneManager.LoadScene("Fase2");
+	}
+	public void Fase3()
+	{
+		SceneManager.LoadScene("Fase3");
 	}
 }

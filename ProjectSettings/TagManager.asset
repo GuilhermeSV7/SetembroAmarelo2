@@ -5,13 +5,12 @@ TagManager:
   serializedVersion: 3
   tags:
   - Ground
-  - dialago2
-  - dialago1
-  - die
-  - morte
-  - Coin
-  - coin
-  - text
+  - Isgrounded
+  - Jogador
+  - Playe
+  - Fase1
+  - Fase2
+  - Fase3
   layers:
   - Default
   - TransparentFX
