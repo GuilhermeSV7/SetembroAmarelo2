@@ -5,6 +5,13 @@ TagManager:
   serializedVersion: 3
   tags:
   - Ground
+  - dialago2
+  - dialago1
+  - die
+  - morte
+  - Coin
+  - coin
+  - text
   layers:
   - Default
   - TransparentFX
