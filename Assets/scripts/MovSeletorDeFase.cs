@@ -1,53 +1,87 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class MovSeletorDeFase : MonoBehaviour
 {
 	public float speed = 5f;
 
 	private SpriteRenderer spriteRenderer;
+	private Vector3 moveDirection;
 	private Rigidbody2D rb;
+	private Animator playerAnimator;
 
 	private void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
+		playerAnimator = GetComponent<Animator>();
 		spriteRenderer = GetComponent<SpriteRenderer>();
 	}
 
-	private void Update()
+	private void FixedUpdate()
 	{
-		float moveHorizontal = Input.GetAxis("Horizontal");
-		float moveVertical = Input.GetAxis("Vertical");
+		Vector2 direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
+		rb.linearVelocity = direction.normalized * speed;
 
-
-		rb.linearVelocity = new Vector2(moveHorizontal * speed, rb.linearVelocity.y).normalized * speed;
-		rb.linearVelocity = new Vector2(rb.linearVelocity.x, moveVertical * speed).normalized * speed;
-
-		rb.linearVelocity.Normalize();
-
-		if (moveHorizontal < 0)
+		if (direction.x != 0)
 		{
-			spriteRenderer.flipX = true;
+			ResetLayer();
+            playerAnimator.SetLayerWeight(2, 1);
 
+            if (direction.x < 0)
+			{
+				spriteRenderer.flipX = true;
+
+			}
+			else if (direction.x > 0)
+			{
+				spriteRenderer.flipX = false;
+			}
 		}
-		else if (moveHorizontal > 0)
+
+		if (direction.y > 0 && direction.x == 0)
 		{
-			spriteRenderer.flipX = false;
+			ResetLayer();
+			playerAnimator.SetLayerWeight(1, 1);
+		}
+        if (direction.y < 0 && direction.x == 0)
+        {
+            ResetLayer();
+            playerAnimator.SetLayerWeight(0, 1);
+        }
+
+        if (rb.linearVelocity != Vector2.zero)
+		{
+			playerAnimator.SetBool("walking", true);
+		}
+		else
+		{
+			playerAnimator.SetBool("walking", false);
 		}
 	}
 
-	//	if (isFase1 == true)
-	//	{
-	//		fase1.SetActive(true);
-	//	}
-	//	else
-	//	{
-	//		fase1.SetActive(false);
-	//	}
-	//}
+	private void ResetLayer()
+	{
+        playerAnimator.SetLayerWeight(0, 0); playerAnimator.SetLayerWeight(1, 0); playerAnimator.SetLayerWeight(2, 0);
+    }
 
-	//Fase code
+    private void Update()
+	{
+		//float moveX = Input.GetAxis("Horizontal");
+		//float moveY = Input.GetAxis("Vertical");
+
+		////moveDirection = new Vector3(moveVertical, moveHorizontal, 0f).normalized * speed;
+
+		//rb.linearVelocity = new Vector2(moveX * speed, rb.linearVelocity.y).normalized * speed;
+		//rb.linearVelocity = new Vector2(rb.linearVelocity.x, moveY * speed).normalized * speed;
+
+		//rb.linearVelocity.Normalize();
+
+		
+
+		
+	}
 
 	public GameObject fase1;
 	public GameObject fase2;

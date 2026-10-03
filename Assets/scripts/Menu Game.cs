@@ -21,7 +21,6 @@ public class MenuGame : MonoBehaviour
 		SceneManager.LoadScene("Game");
 	}
 
-
 	private void Update()
 	{
 		if (Input.GetKeyUp(KeyCode.Escape))
