@@ -3643,6 +3643,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundMixerManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2782249390130556931, guid: cf4c815e54e9f904797cc3bf628a1546, type: 3}
+      propertyPath: SliderSom
+      value: 
+      objectReference: {fileID: 4810046985292260369}
+    - target: {fileID: 2782249390130556931, guid: cf4c815e54e9f904797cc3bf628a1546, type: 3}
+      propertyPath: SliderMusic
+      value: 
+      objectReference: {fileID: 8753269554777088240}
+    - target: {fileID: 2782249390130556931, guid: cf4c815e54e9f904797cc3bf628a1546, type: 3}
+      propertyPath: SliderMaster
+      value: 
+      objectReference: {fileID: 9124328840807648843}
     - target: {fileID: 5475190652738053760, guid: cf4c815e54e9f904797cc3bf628a1546, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.926575
