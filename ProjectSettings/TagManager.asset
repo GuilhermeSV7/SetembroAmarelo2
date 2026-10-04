@@ -11,6 +11,13 @@ TagManager:
   - Fase1
   - Fase2
   - Fase3
+  - Coin
+  - portalr1
+  - portalr2
+  - portalg1
+  - portalg2
+  - portalb1
+  - portalb2
   layers:
   - Default
   - TransparentFX
