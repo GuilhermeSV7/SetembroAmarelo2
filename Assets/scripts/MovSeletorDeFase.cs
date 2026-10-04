@@ -66,22 +66,6 @@ public class MovSeletorDeFase : MonoBehaviour
         playerAnimator.SetLayerWeight(0, 0); playerAnimator.SetLayerWeight(1, 0); playerAnimator.SetLayerWeight(2, 0);
     }
 
-    private void Update()
-	{
-		//float moveX = Input.GetAxis("Horizontal");
-		//float moveY = Input.GetAxis("Vertical");
-
-		////moveDirection = new Vector3(moveVertical, moveHorizontal, 0f).normalized * speed;
-
-		//rb.linearVelocity = new Vector2(moveX * speed, rb.linearVelocity.y).normalized * speed;
-		//rb.linearVelocity = new Vector2(rb.linearVelocity.x, moveY * speed).normalized * speed;
-
-		//rb.linearVelocity.Normalize();
-
-		
-
-		
-	}
 
 	public GameObject fase1;
 	public GameObject fase2;

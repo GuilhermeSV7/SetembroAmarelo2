@@ -10,9 +10,9 @@ public class SoundMixer : MonoBehaviour
 	
 	[SerializeField] public Slider SliderMaster, SliderSom, SliderMusic;
     public void Start()
-    {	
+    {
 		GetVolume();
-    }
+	}
 
 
     public void SetMasterVolume(float level)
@@ -40,5 +40,8 @@ public class SoundMixer : MonoBehaviour
 		VSatual = PlayerPrefs.GetFloat("SoundMaster");
 		VmUatual = PlayerPrefs.GetFloat("MusicMaster");
 
-	}
+        SliderMaster.value = VMatual;
+        SliderSom.value = VSatual;
+        SliderMusic.value = VmUatual;
+    }
 }
