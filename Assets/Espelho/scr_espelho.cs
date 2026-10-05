@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using static UnityEngine.UI.ScrollRect;
 
-class scr_espelho: MonoBehaviour
+class scr_espelho : MonoBehaviour
 {
 	private float speed;
 
@@ -13,10 +13,10 @@ class scr_espelho: MonoBehaviour
 
 	private bool isGrounded;
 
-	private Rigidbody2D rb;
+    private Rigidbody2D rb;
+    private SpriteRenderer sprite;
+    private bool canJump;
 
-	private SpriteRenderer sprite;
-	private bool canJump;
     public Animator animator;
     public bool IsMovingUp;
     public bool IsMovingDown;
@@ -64,24 +64,19 @@ class scr_espelho: MonoBehaviour
 	}
 	}
 
-	private void Walking()
-	{
-		float axisRaw = Input.GetAxisRaw("Horizontal");
-		rb.linearVelocity = new Vector2(axisRaw * speed, rb.linearVelocity.y);
-		//if (axisRaw > 0)
-		//{
-		//	sprite.flipX = false; // Olha para a direita
-		//}
-		//else if (axisRaw < 0)
-		//{
-		//	sprite.flipX = true;  // Olha para a esquerda
-		//}
+    private void Walking()
+    {
+        float axisRaw = Input.GetAxisRaw("Horizontal");
+
+        rb.linearVelocity = new Vector2(axisRaw * speed, rb.linearVelocity.y);
+
         if (MovementTime <= 0.01f)
         {
             IsMovingLeft = false;
             IsMovingRight = false;
             IsMovingUp = false;
             IsMovingDown = false;
+
             animator.SetBool("IsIdle", true);
             animator.SetBool("IsWalkingLeft", false);
             animator.SetBool("IsWalkingRight", false);
@@ -90,25 +85,30 @@ class scr_espelho: MonoBehaviour
         if (Input.GetAxisRaw("Horizontal") > 0)
         {
             IsMovingRight = true;
+
             animator.SetBool("IsWalkingRight", true);
             animator.SetBool("IsWalkingLeft", false);
             animator.SetBool("IsIdle", false);
         }
+
         if (Input.GetAxisRaw("Horizontal") < 0)
         {
             IsMovingLeft = true;
+
             animator.SetBool("IsWalkingLeft", true);
             animator.SetBool("IsWalkingRight", false);
             animator.SetBool("IsIdle", false);
         }
     }
 
-	private void Jump()
-	{
-			canJump = false;
-			rb.linearVelocity = new Vector2(rb.linearVelocity.x, jump);
-			StartCoroutine(JumpTimer());
-	}
+    private void Jump()
+    {
+        canJump = false;
+
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jump);
+
+        StartCoroutine(JumpTimer());
+    }
 
 	public IEnumerator JumpTimer() 
 	{
