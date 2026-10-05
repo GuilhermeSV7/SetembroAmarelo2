@@ -18,6 +18,9 @@ TagManager:
   - portalg2
   - portalb1
   - portalb2
+  - espelhoenemy
+  - espelhocry
+  - espelhoend
   layers:
   - Default
   - TransparentFX
