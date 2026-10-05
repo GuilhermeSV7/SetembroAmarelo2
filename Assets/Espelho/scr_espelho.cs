@@ -19,6 +19,8 @@ class scr_espelho: MonoBehaviour
     public bool IsMovingDown;
     public bool IsMovingLeft;
     public bool IsMovingRight;
+	public GameObject PlayerDie;
+	public GameObject PlayerSpawn;
     [SerializeField] private float MovementTime;
     [SerializeField] public float PlayerMovementSpeed = 3f;
 
@@ -29,16 +31,18 @@ class scr_espelho: MonoBehaviour
 		speed = 11;
 		jump = 13;
 		canJump = true;
+		scr_espelhostatic.podemover = true;
 	}
 
 	private void Update()
 	{
-		Walking();
-
+		if (scr_espelhostatic.podemover) { Walking(); }
+		if (scr_espelhostatic.podemover) { 
 		if (Input.GetKeyDown(KeyCode.Space) && canJump || Input.GetKeyDown(KeyCode.UpArrow) && canJump)
 		{
 			Jump();
 		}
+	}
 	}
 
 	private void Walking()
@@ -93,18 +97,29 @@ class scr_espelho: MonoBehaviour
 		canJump = true;
 		yield return null;
 	}
+
 	//private void OnCollisionEnter2D(Collision2D collision)
 	//{
-	//	if (collision.collider.CompareTag("IsGrounded"))
+	//	if (collision.collider.CompareTag("espelhoenemy"))
 	//	{
-	//		isGrounded = true;
-	//	}
-
-	//	if (collision.collider.CompareTag("Inimigo"))
-	//	{
-	//		isGrounded = true;
+	//		StartCoroutine(espelhodie());
 	//	}
 	//}
+
+	IEnumerator espelhodie()
+    {
+    scr_espelhostatic.podemover = false;
+    transform.position = new Vector3(-26.5f, -7.75f, 0);
+	PlayerDie.gameObject.SetActive(true);
+    yield return new WaitForSeconds(2.5f);
+	PlayerDie.gameObject.SetActive(false);
+	PlayerSpawn.gameObject.SetActive(true);
+    yield return new WaitForSeconds(2.5f);
+    PlayerSpawn.gameObject.SetActive(false);
+    scr_espelhostatic.podemover = true;
+	scr_espelhostatic.espelholevel = 0;
+    }
+
 
 	//private void OnCollisionExit2D(Collision2D collision)
 	//{
@@ -119,35 +134,45 @@ class scr_espelho: MonoBehaviour
 	//}
 
 	private void OnTriggerEnter2D(Collider2D collision)
-	{
-		if (collision.gameObject.CompareTag("portalr1"))
+    {
+        if (collision.gameObject.CompareTag("espelhoenemy"))
+        {
+            StartCoroutine(espelhodie());
+        }
+        if (collision.gameObject.CompareTag("portalr1"))
 		{
 			transform.position = new Vector3(-23, 2);
-			//Debug.Log("r1");
-		}
+			scr_espelhostatic.espelholevel = 1;
+            //Debug.Log("r1");
+        }
 		if (collision.gameObject.CompareTag("portalr2"))
 		{
 			transform.position = new Vector3(16.5f, -8);
+            scr_espelhostatic.espelholevel = 0;
             //Debug.Log("r2");
         }
 		if (collision.gameObject.CompareTag("portalg1"))
 		{
 			transform.position = new Vector3(-3, 2);
+            scr_espelhostatic.espelholevel = 2;
             //Debug.Log("g1");
         }
 		if (collision.gameObject.CompareTag("portalg2"))
 		{
 			transform.position = new Vector3(21.5f, -8);
+            scr_espelhostatic.espelholevel = 0;
             //Debug.Log("g2");
         }
 		if (collision.gameObject.CompareTag("portalb1"))
 		{
 			transform.position = new Vector3(20, 2);
+            scr_espelhostatic.espelholevel = 3;
             //Debug.Log("b1");
         }
 		if (collision.gameObject.CompareTag("portalb2"))
 		{
 			transform.position = new Vector3(26.5f, -8);
+            scr_espelhostatic.espelholevel = 0;
             //Debug.Log("b2");
         }
 	}
