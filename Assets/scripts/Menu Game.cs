@@ -50,6 +50,9 @@ public class MenuGame : MonoBehaviour
 		Application.Quit();
 	}
 
+	public void FullScreen(bool isFullscreen)
+	{ Screen.fullScreen = isFullscreen; }
+
 	//public void Fase1()
 	//{
 	//	SceneManager.LoadScene("Fase1");
