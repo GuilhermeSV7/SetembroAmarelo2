@@ -26,8 +26,8 @@ public class dialogo : MonoBehaviour
         // Ativa o diálogo 1
         dialogo1.SetActive(true);
 
-        // Espera 3 segundos
-        yield return new WaitForSeconds(3f);
+        // Espera 5 segundos
+        yield return new WaitForSeconds(5f);
 
         // Desativa o diálogo 1
         dialogo1.SetActive(false);
