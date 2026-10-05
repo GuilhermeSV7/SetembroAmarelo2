@@ -5,6 +5,21 @@ TagManager:
   serializedVersion: 3
   tags:
   - Isgrounded
+  - Jogador
+  - Playe
+  - Fase1
+  - Fase2
+  - Fase3
+  - Coin
+  - portalr1
+  - portalr2
+  - portalg1
+  - portalg2
+  - portalb1
+  - portalb2
+  - espelhoenemy
+  - espelhocry
+  - espelhoend
   - Pessoa1
   - Pessoa2
   - Pessoa3
