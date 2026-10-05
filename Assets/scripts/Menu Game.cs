@@ -8,12 +8,12 @@ public class MenuGame : MonoBehaviour
 	public bool IsMenu;
 	public int IsMenuI = -1;
 
-	public void desativaMenu()
+
+    public void desativaMenu()
 	{
 		menu.SetActive(!menu.activeSelf);
 		IsMenuI *= -1;
 		if (IsMenuI == 1) { IsMenu = true; } else { IsMenu = false; }
-
 	}
 
 	public void PlayMenu()
@@ -21,12 +21,12 @@ public class MenuGame : MonoBehaviour
 		SceneManager.LoadScene("Game");
 	}
 
-
 	private void Update()
 	{
 		if (Input.GetKeyUp(KeyCode.Escape))
 		{
 			desativaMenu();
+			
 		}
 	}
 
@@ -50,16 +50,16 @@ public class MenuGame : MonoBehaviour
 		Application.Quit();
 	}
 
-	public void Fase1()
-	{
-		SceneManager.LoadScene("Fase1");
-	}
-	public void Fase2()
-	{
-		SceneManager.LoadScene("Fase2");
-	}
-	public void Fase3()
-	{
-		SceneManager.LoadScene("Fase3");
-	}
+	//public void Fase1()
+	//{
+	//	SceneManager.LoadScene("Fase1");
+	//}
+	//public void Fase2()
+	//{
+	//	SceneManager.LoadScene("Fase2");
+	//}
+	//public void Fase3()
+	//{
+	//	SceneManager.LoadScene("Fase3");
+	//}
 }

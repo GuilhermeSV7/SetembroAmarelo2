@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerJump : MonoBehaviour
@@ -7,17 +8,25 @@ public class PlayerJump : MonoBehaviour
     private Rigidbody2D rb;
     private bool isGrounded;
 
-    void Start()
+    [SerializeField] private AudioClip PuloSomClip;
+
+    private AudioSource audioSource;
+
+	void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-    }
+        audioSource = GetComponent<AudioSource>();
+	}
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-        }
+
+            audioSource.clip = PuloSomClip;
+            SoudManeger.instance.PlaySoundFXClip(PuloSomClip, transform, 1f);
+		}
     }
 
     void OnCollisionEnter2D(Collision2D collision)
