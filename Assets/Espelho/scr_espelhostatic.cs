@@ -1,6 +1,7 @@
 using UnityEngine;
 
-static class scr_espelhostatic : MonoBehaviour
+static class scr_espelhostatic
 {
-    static int espelholevel;
+    public static int espelholevel;
+    public static bool podemover;
 }
