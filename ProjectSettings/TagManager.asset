@@ -4,10 +4,11 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Ground
   - Isgrounded
-  - Jogador
-  - Playe
+  - Pessoa1
+  - Pessoa2
+  - Pessoa3
+  - Pessoa4
   layers:
   - Default
   - TransparentFX

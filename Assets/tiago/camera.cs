@@ -1,25 +1,29 @@
 using UnityEngine;
-using UnityEngine.UIElements;
-public class camera : MonoBehaviour
+
+public class SeguirPlayer : MonoBehaviour
 {
-    private Transform target;
-    private Vector3 velocity = Vector3.zero;
-    private float smothTime = 0.1f;
+    public Transform player;
+    public float velocidade = 3f;
 
+    private bool seguindo = false;
 
-    void Start()
-    {
-        target = GameObject.FindGameObjectWithTag("Player").transform;
-    }
-
-    
     void Update()
     {
-        Vector3 cameraPosition = target.position + new Vector3(0, 0, -1);
-        transform.position = Vector3.SmoothDamp(transform.position, cameraPosition, ref velocity, smothTime);
-    
+        if (seguindo)
+        {
+            transform.position = Vector2.MoveTowards(
+                transform.position,
+                player.position,
+                velocidade * Time.deltaTime
+            );
+        }
     }
 
-  
-
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            seguindo = true;
+        }
+    }
 }
