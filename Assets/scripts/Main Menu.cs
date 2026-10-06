@@ -31,6 +31,7 @@ public class MainMenu : MonoBehaviour
 	{
 		BGCr.SetActive(true);
 	}
+	public GameObject creditos;
 	public void CloseCreditos()
 	{
 		BGCr.SetActive(false);

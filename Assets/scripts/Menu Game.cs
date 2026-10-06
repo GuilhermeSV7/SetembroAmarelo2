@@ -1,3 +1,4 @@
+using UnityEditor.ProjectWindowCallback;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -21,16 +22,19 @@ public class MenuGame : MonoBehaviour
 		SceneManager.LoadScene("Game");
 	}
 
-	private void Update()
-	{
+	public void SDF () { SceneManager.LoadScene("SDF"); }
+
+	
+	private void Update() {
 		if (Input.GetKeyUp(KeyCode.Escape))
 		{
-			desativaMenu();
-			
+			desativaMenu();			
 		}
+
 	}
 
-	public void BGOpEntrar()
+
+    public void BGOpEntrar()
 	{
 		BGOp.SetActive(true);
 	}
